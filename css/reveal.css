@@ -244,9 +244,9 @@ html:-moz-full-screen-ancestor {
 .reveal .progress {
   position: fixed;
   display: none;
-  height: 3px;
+  height: .5em;
   width: 100%;
-  bottom: 0;
+  top: 0;
   left: 0;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.2); }
@@ -277,7 +277,7 @@ html:-moz-full-screen-ancestor {
   bottom: 15px;
   opacity: 0.5;
   z-index: 31;
-  font-size: 12px; }
+  font-size: 1em; }
 
 /*********************************************
  * SLIDES
