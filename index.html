@@ -44,10 +44,11 @@
 					<p>Michael Posa</p>
 					<p>Joint work with Twan Koolen</p>
 					<p>12/16/15</p>
+					<div class="fragment"><p class="fragment shrink">With apologies for the reveal.js experimentation</p></div>
 				</section>
 
 				<section>
-					<h3>My Outline</h3>
+					<h2>My Outline</h2>
 					<ul>
 						<li>Push recovery video</li>
 						<li>The problem description</li>
@@ -60,13 +61,44 @@
 					</ul>
 				</section>
 
+				<section>
+					<h3><b>Legged balancing control, stepping when needed</b></h3>
+					<div class="fragment"><h3 class="fragment shrink">Do we need intelligent push recovery?</h3></div>
+					<div class="fragment"><h3 class="fragment shrink">Is it enough to step in the direction of the fall?</h3></div>
+					<h2 class="fragment">Good questions!</h2>
+				</section>
+				<section>
+					<h3>A (Controlled) Hybrid Systems View</h3>
+					<div class="fragment shrink">
+					<p>Polcy: controller $u(x)$, hybrid guard $G(x)$, and discrete controller $s(x)$ where</p>
+					<ul>
+						<li>Execute $u(x)$ whenever $G(x) > 0$</li>
+						<li>Take a step with discrete input $s(x)$ whenever $G(x) = 0$</li>
+					</ul>
+					</div>
+					<div class="fragment">
+						<p>Lyapunov Functions</p>
+						<ul>
+							<li>$G(x) > 0 \Rightarrow \dot V(x,u(x)) \leq 0$</li>
+							<li>$G(x) = 0 \Rightarrow V(R(x,s(x))) \leq V(x)$</li>
+						</ul>
+					</div>
+					<p class="fragment">But $G,u,s$ are all unknown, so this is non-convex$^*$</p>
+				</section>
+
+				<section>
+					<h3>No need to solve it all at once</h3>
+					<p>Capture point approach introduced by Jerry Pratt<sup>1</sup> and analyzed by Twan <sup>2</sup></p>
+					<small>
+						<sup>1</sup>Jerry Pratt et al. <i>Capture Point: A Step toward Humanoid Push Recovery.</i> Humanoids, 2006
+						<br><sup>2</sup>Twan Koolen et al. <i>Capturability-Based Analysis and Control of Legged Locomotion.</i> IJRR, 2012.
+				</section>
+
+<!--
 						<section data-background-video="videos/icra_video.mp4" data-background-video-control>
 						</section>
-
-<!-- 						<section>
-							<video controls autoplay loop src="videos/icra_video.mp4"/>
-						</section>
-					-->
+-->
+<!-- 					
 					<section>
 						\begin{equation}f(x) = 10\end{equation}
 
@@ -94,215 +126,7 @@
 						</a>
 					</section> -->
 				</section>
-
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
-
-				<section>
-					<h2>Touch Optimized</h2>
-					<p>
-						Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
-					</p>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-					## Markdown support
-
-					Write content using inline or external Markdown.
-						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-						## Markdown support
-
-						Write content using inline or external Markdown.
-						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-						  </section>
-						  ```
-						  </script>
-						</section>
-
-						<section id="fragments">
-							<h2>Fragments</h2>
-							<p>Hit the next arrow...</p>
-							<p class="fragment">... to step through ...</p>
-							<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
-
-							<aside class="notes">
-								This slide has fragments which are also stepped through in the notes window.
-							</aside>
-						</section>
-						<section>
-							<h2>Fragment Styles</h2>
-							<p>There's different types of fragments, like:</p>
-							<p class="fragment grow">grow</p>
-							<p class="fragment shrink">shrink</p>
-							<p class="fragment fade-out">fade-out</p>
-							<p class="fragment current-visible">current-visible</p>
-							<p class="fragment highlight-red">highlight-red</p>
-							<p class="fragment highlight-blue">highlight-blue</p>
-						</section>
-
-						<section id="transitions">
-							<h2>Transition Styles</h2>
-							<p>
-								You can select from different transitions, like: <br>
-								<a href="?transition=none#/transitions">None</a> -
-								<a href="?transition=fade#/transitions">Fade</a> -
-								<a href="?transition=slide#/transitions">Slide</a> -
-								<a href="?transition=convex#/transitions">Convex</a> -
-								<a href="?transition=concave#/transitions">Concave</a> -
-								<a href="?transition=zoom#/transitions">Zoom</a>
-							</p>
-						</section>
-
-						<section id="themes">
-							<h2>Themes</h2>
-							<p>
-								reveal.js comes with a few themes built in: <br>
-								<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-								<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
-								<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
-								<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
-								<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
-								<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
-								<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
-								<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
-								<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
-								<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
-								<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
-								<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
-							</p>
-						</section>
-
-						<section data-background="#dddddd">
-							<h2>Slide Backgrounds</h2>
-							<p>
-								Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
-							</p>
-							<a href="#" class="navigate-down">
-								<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-							</a>
-						</section>
-						<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
-							<h2>Image Backgrounds</h2>
-							<pre><code class="hljs">&lt;section data-background="image.png"&gt;</code></pre>
-						</section>
-						<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
-							<h2>Tiled Backgrounds</h2>
-							<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-						</section>
-						<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
-							<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
-								<h2>Video Backgrounds</h2>
-								<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
-							</div>
-						</section>
-						<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
-							<h2>... and GIFs!</h2>
-						</section>
-
-						<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-							<h2>Background Transitions</h2>
-							<p>
-								Different background transitions are available via the backgroundTransition option. This one's called "zoom".
-							</p>
-							<pre><code class="hljs">Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
-						</section>
-
-						<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-							<h2>Background Transitions</h2>
-							<p>
-								You can override background transitions per-slide.
-							</p>
-							<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
-						</section>
-
-						<section>
-							<h2>Pretty Code</h2>
-							<pre><code class="hljs" data-trim contenteditable>
-								function linkify( selector ) {
-								if( supports3DTransforms ) {
-
-								var nodes = document.querySelectorAll( selector );
-
-								for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-								var node = nodes[i];
-
-								if( !node.className ) {
-								node.className += ' roll';
-							}
-						}
-					}
-				}
-			</code></pre>
-			<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-		</section>
-
-		<section>
-			<h2>Marvelous List</h2>
-			<ul>
-				<li>No order here</li>
-				<li>Or here</li>
-				<li>Or here</li>
-				<li>Or here</li>
-			</ul>
-		</section>
-
-		<section>
-			<h2>Fantastic Ordered List</h2>
-			<ol>
-				<li>One is smaller than...</li>
-				<li>Two is smaller than...</li>
-				<li>Three!</li>
-			</ol>
-		</section>
-
-		<section>
-			<h2>Tabular Tables</h2>
-			<table>
-				<thead>
-					<tr>
-						<th>Item</th>
-						<th>Value</th>
-						<th>Quantity</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Apples</td>
-						<td>$1</td>
-						<td>7</td>
-					</tr>
-					<tr>
-						<td>Lemonade</td>
-						<td>$2</td>
-						<td>18</td>
-					</tr>
-					<tr>
-						<td>Bread</td>
-						<td>$3</td>
-						<td>2</td>
-					</tr>
-				</tbody>
-			</table>
-		</section>
-
+<!--
 		<section>
 			<h2>Clever Quotes</h2>
 			<p>
@@ -315,13 +139,6 @@
 			</blockquote>
 		</section>
 
-		<section>
-			<h2>Intergalactic Interconnections</h2>
-			<p>
-				You can link between slides internally,
-				<a href="#/2/3">like this</a>.
-			</p>
-		</section>
 
 		<section>
 			<h2>Speaker View</h2>
@@ -361,16 +178,6 @@
 		</p>
 	</section>
 
-	<section>
-		<h2>Much more</h2>
-		<ul>
-			<li>Right-to-left support</li>
-			<li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
-			<li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
-			<li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
-			<li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
-		</ul>
-	</section>
 
 	<section style="text-align: left;">
 		<h1>THE END</h1>
@@ -379,7 +186,7 @@
 			- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
 		</p>
 	</section>
-
+-->
 </div>
 
 </div>
@@ -393,7 +200,7 @@
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				controls: true,
-				progress: true,
+				progress: false,
 				history: true,
 				center: true,
 				width: '80%',
