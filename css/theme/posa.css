@@ -4,10 +4,17 @@
  *
  * This theme is Copyright (C) 2012-2013 Owen Versteeg, http://owenversteeg.com - it is MIT licensed.
  */
+.altcolor {
+  color: #801515;
+}
+
+div.border {
+  border:5px solid #550000;
+  display: inline-block;
+}
+
 .reveal a {
   line-height: 1.3em; }
-
-
 
 /*********************************************
  * GLOBAL STYLES
@@ -65,6 +72,16 @@ body {
 
 .reveal h1 {
   text-shadow: none; }
+
+ h3.slidetitle {
+  color: #550000;
+  font-variant: small-caps;
+ }
+
+h2.slidetitle {
+  color: #550000;
+  font-variant: small-caps;
+ }
 
 /*********************************************
  * OTHER
@@ -124,14 +141,14 @@ body {
   quotes: none; }
 
 .reveal blockquote {
+  text-align: center;
   display: block;
   position: relative;
   width: 70%;
   margin: 20px auto;
   padding: 5px;
-  font-style: italic;
   background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2); }
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); }
 
 .reveal blockquote p:first-child,
 .reveal blockquote p:last-child {
@@ -227,8 +244,8 @@ body {
 .reveal section img {
   margin: 15px 0px;
   background: rgba(255, 255, 255, 0.12);
-  border: 4px solid #000;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); }
+  border: 2px solid #550000;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); }
 
 .reveal section img.plain {
   border: 0;
