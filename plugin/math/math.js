@@ -21,6 +21,8 @@ var RevealMath = window.RevealMath || (function(){
 			skipStartupTypeset: true
 		});
 
+		MathJax.Hub.Config({ TeX: { extensions: ["color.js"] }});
+
 		// Typeset followed by an immediate reveal.js layout since
 		// the typesetting process could affect slide height
 		MathJax.Hub.Queue( [ 'Typeset', MathJax.Hub ] );
