@@ -34,7 +34,7 @@
 	</head>
 
 	<body>
-
+		$\definecolor{highlight}{RGB}{18,110,213}$
 		<div class="reveal">
 
 			<!-- Any section element inside of this container is displayed as a slide -->
@@ -59,11 +59,76 @@
 						<li>Salient model features</li>
 						<li>Examples</li>
 						<li>Control Extraction</li>
+						<li>Frlib shout out</li>
 					</ul>
 				</section>
-
 				<section>
-					<h3 class="slidetitle"><b>Legged balancing control, stepping when needed</b></h3>
+					<h3 class="slidetitle">Push Recovery</h3>
+					<div style="display:inline-table">
+						<div style="padding-right: 120px;padding-bottom: 30px" >
+							<video muted data-autoplay id="bdbetavideo" height="240">
+								<source data-src="videos/bigDogBeta.mp4" type="video/mp4"/>
+							</video>
+							<div style="position:absolute;top:110px;left:60px">
+								<video muted data-autoplay controls class="fragment"  id="bdvideo" height="240">
+									<source data-src="videos/bigDog.mp4" type="video/mp4"/>
+								</video>
+							</div>
+							<br>
+							<!--<small class="fragment">[Pantless Knights, Boston Dynamics]</small>-->
+						</div>
+					</div>
+					<video muted data-autoplay controls height="240" id="ihmcpush">
+						<source data-src="videos/ihmc_push_recovery.mp4" type="video/mp4"/>
+					</video>
+					<video muted data-autoplay controls height="240">
+						<source data-src="videos/stephens_push.mp4" type="video/mp4"/>
+					</video>
+					<video muted data-autoplay controls height="240" id="mitpush">
+						<source data-src="videos/mit_atlas_push.mp4" type="video/mp4"/>
+					</video>
+					<script>
+						document.getElementById('bdbetavideo').addEventListener('loadedmetadata', function() {this.currentTime = 24;}, false);
+						document.getElementById('bdvideo').addEventListener('loadedmetadata', function() {this.currentTime = 34;}, false);
+						document.getElementById('ihmcpush').addEventListener('loadedmetadata', function() {this.currentTime = 75;}, false);
+						document.getElementById('mitpush').addEventListener('loadedmetadata', function() {this.currentTime = 0;}, false);
+					</script> 
+				</section>
+				<!--
+				<section>
+					
+					<div style="position:relative;height:200px">
+						<div style="position:absolute;width:600pxleft:0%;top:0%" >
+							<video muted data-autoplay  height="240">
+								<source data-src="videos/bigDogBeta.mp4" type="video/mp4"/>
+							</video>
+							<div style="position:absolute;top:10%;left:30%">
+								<video muted data-autoplay class="fragment"  id="bdvideo"  height="240">
+									<source data-src="videos/bigDog.mp4" type="video/mp4"/>
+								</video>
+							</div>
+							<br>
+							<small>[Pantless Knights, Boston Dynamics]</small>
+						</div>
+						<div style="position:absolute;width:600px;left:50%;top:0%" >
+							<video muted data-autoplay id="bdbetavideo2" height="240">
+								<source data-src="videos/bigDogBeta.mp4" type="video/mp4"/>
+							</video>
+							<div style="position:absolute;top:10%;left:30%">
+								<video muted data-autoplay class="fragment"  id="bdvideo2"  height="240">
+									<source data-src="videos/bigDog.mp4" type="video/mp4"/>
+								</video>
+							</div>
+							<br>
+							<small>[Pantless Knights, Boston Dynamics]</small>
+						</div>
+					</div>
+asdf
+
+				</section>
+-->
+				<section>
+					<h3 class="slidetitle">Legged balancing control, stepping when needed</h3>
 					<div class="fragment"><h3 class="fragment shrink">Do we need intelligent push recovery?</h3></div>
 					<div class="fragment"><h3 class="fragment shrink">Is it enough to step in the direction of the fall?</h3></div>
 					<h2 class="fragment">Good questions!</h2>
@@ -96,8 +161,8 @@
 
 				<section>
 					<h3 class="slidetitle">$N$-step Capture Regions<sup>1</sup></h3>
-					<p>Recursively find the policy and set of states that can be stabilized in at most $N$ steps.</p>
-					<p><img src="images/captureregions.png" style="width:400px"/></p>
+					<p>Recursively find policy states that can be stabilized in at most $N$ steps.</p>
+					<p><img src="images/captureregions.png" style="max-width:30%"/></p>
 					<!--
 					<div style="display:inline-block;vertical-align:top;">
 					    <img src="images/captureregions.png" style="width:300px"/>
@@ -117,7 +182,7 @@
 				</section>
 
 				<section>
-					<h3 class="slidetitle">Occupation Measures Approach<sup>1</sup></h3>
+					<h3 class="slidetitle">Occupation Measures Approach<sup>2</sup></h3>
 					<p><i>Convex</i> formulation of <i>outer approximation</i> to reachable set</p>
 					<div class="border fragment">
 						\begin{align*}
@@ -131,57 +196,56 @@
 					</div>
 					<p class="fragment">The 1-sublevel set of $V(t,x)$ provably <i>cannot</i> reach the goal set</p>
 					<small>
-						<sup>1</sup>Henrion and Korda.<i> Convex computation of the region of attraction of polynomial control systems.</i> TAC, 2014.
+						<sup>2</sup>Henrion and Korda.<i> Convex computation of the region of attraction of polynomial control systems.</i> TAC, 2014.
 					</small>
 				</section>
 				<section>
+					
 					<h3 class="slidetitle">$N$-step Reachability</h3>
-					<p>
-					Initialize using $(N-1)$-step solution by choosing 
-					\begin{equation}\mathcal{X}_{goal} = \{x \in \mathcal{X} : V_{N-1}(0,x) \geq 0 \}\end{equation}
-				</p>
-					<div class="border fragment">
+					Solve for $V_N(t,x)$ and $W_N(x)$ using $(N-1)$-step solution by choosing 
+					\begin{equation}\mathcal{X}_{goal} = \{x \in \mathcal{X} : V_{N-1}(0,R(x,s)) \geq 0 \}\end{equation}
+					</p>
+					
+					<div class="border">
+						<small>
 						\begin{align*}
 							\min_{V_N(t,x),W_N(x)} \qquad &amp;\int_{\mathcal{X}}W_N(x)dx \\
 							\text{subject to}\\
-							x \in \mathcal{X}_{goal}, t \in \mathcal{T} &amp;\Rightarrow V_N(t,x) \geq 0 \\
+							x \in \mathcal{X}_{goal}, t \in \color{highlight}\mathcal{T}_{step} &amp;\Rightarrow V_N(t,x) \geq 0 \\
 							x \in \mathcal{X}, u \in \mathcal{U}, t \in \mathcal{T}  &amp;\Rightarrow -\dot V_N(t,x) \geq 0 \\
 							x \in \mathcal{X}  &amp;\Rightarrow W_N(x) \geq 0 \\
 							x \in \mathcal{X}, t \in \mathcal{T}  &amp; \Rightarrow W_N(x) - V_N(t,x) - 1 \geq 0
 						\end{align*}
+					</small>
 					</div>
+
+					<blockquote class="altcolor">Approximates set of states that can reach $(N-1)$-step capture region with some inputs $u(t)$ and $s$ in time $t \in \mathcal{T}_{step}$</blockquote>
+				
 				</section>
 
 				<section>
-					<h3 class="slidetitle">Model list</h3>
-					<ul>
-						<li>LIPM</li>
-						<li>LIPM with Foot</li>
-						<li>Variable Height, Fixed Step</li>
-						<li>Fixed height, swing leg</li>
-						<li>Variable height, swing leg</li>
-						<li>Variable height and rotation, swing leg</li>
-						<li>LIPM with foot and inertia?</li>
-					</ul>
-				</section>
-
-				<section>
-					<h3 class="slidetitle">A Simple Model: Linear Inverted Pendulum (LIPM)</h3>
-					<img src="images/lipm.png" width="20%"/>
+					<h3 class="slidetitle">Linear Inverted Pendulum (LIPM)</h3>
+					<img src="images/lipm.png" width="30%"/>
 					<table>
 						<tr>
-							<td>
-								<p>Centroidal dynamics</p>
+							<td style="border-right:2px solid">
+								<p><b>Centroidal dynamics</b></p>
 								<ul>
 									<li>Constant center of mass height</li>
 									<li>Constant angular momentum</li>
 								</ul>
 							</td>
-							<td>
-								<p>Swing-leg dynamics</p>
+							<td style="border-right:2px solid">
+								<p><b>Swing-leg dynamics</b></p>
 								<ul>
 									<li>Minimum time between steps</li>
 									<li>Maximum step distance</li>
+								</ul>
+							</td>
+							<td>
+								<p><b>Impact</b></p>
+								<ul>
+									<li>None</li>
 								</ul>
 							</td>
 						</tr>
@@ -189,9 +253,37 @@
 				</section>
 				<section>
 					<h3 class="slidetitle">LIPM Validation</h3>
+					<p>Capture regions have analytical solutions to compare against</p>
+					<p>Images and video here</p>
 				</section>
 				<section>
-					<h3 class="slidetitle">Better Models</h3>
+					<h3 class="slidetitle">LIPM with Foot</h3>
+					<p>Control input determines COP relative to foot center</p>
+					<p>Images and video of validation here as well.</p>
+				</section>
+				<section>
+					<h3 class="slidetitle">Modeling: Centroidal Dynamics</h3>
+					<p>Relax constant height and angular momentum assumption</p>
+					\begin{align*}
+						q = \begin{bmatrix} x_{cm} \\ z_{cm} \\ \theta \end{bmatrix}, \qquad
+						\ddot q = \begin{bmatrix} \frac{f_x}{m} \\ \frac{f_z}{m} - g \\ \frac{1}{I}\left(f_zx_{cm} - f_xz_{cm} \right)\end{bmatrix}\\
+					\end{align*}
+					<p>Cartoon, results</p>
+					<video muted data-autoplay controls loop height="240" id="variable_height_video">
+						<source data-src="videos/VariableHeightPointMass2D_V0.mp4" type="video/mp4"/>
+					</video>
+					<script type="text/javascript">
+					  /* play video twice as fast */
+					  document.getElementById("variable_height_video").defaultPlaybackRate = .5;
+					</script>
+				</section>
+				<section>
+					<h3 class="slidetitle">Modeling: Swing Leg Dynamics</h3>
+					<ul>
+						<li>First-order model of swing leg, $\dot x_{swing}=u$</li>
+						<li>Eliminates constant step frequency of LIPM</li>
+					</ul>
+					<p>Cartoon, results</p>
 				</section>
 
 
@@ -304,9 +396,14 @@
 				progress: false,
 				history: true,
 				center: true,
-				width: '60%',
-				height: '60%',
+				width: '960',
+				height: '700',
 				slideNumber: true,
+
+				math: {
+					//mathjax: 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
+					mathjax: 'MathJax/MathJax.js',
+				},
 
 				transition: 'speed', // none/fade/slide/convex/concave/zoom
 
