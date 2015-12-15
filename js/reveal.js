@@ -1803,8 +1803,8 @@
 	function layoutOverview() {
 
 		var margin = 70;
-		var slideWidth = config.width + margin,
-			slideHeight = config.height + margin;
+		var slideWidth = Number(config.width) + margin,
+			slideHeight = Number(config.height) + margin;
 
 		// Reverse in RTL mode
 		if( config.rtl ) {
@@ -1846,8 +1846,8 @@
 	function updateOverview() {
 
 		var margin = 70;
-		var slideWidth = config.width + margin,
-			slideHeight = config.height + margin;
+		var slideWidth = Number(config.width) + margin,
+			slideHeight = Number(config.height) + margin;
 
 		// Reverse in RTL mode
 		if( config.rtl ) {
