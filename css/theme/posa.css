@@ -157,7 +157,8 @@ h3.slidetitle {
   margin: 20px auto;
   padding: 5px;
   background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); }
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); 
+  color:#126ED5}
 
 .reveal blockquote p:first-child,
 .reveal blockquote p:last-child {
@@ -283,11 +284,11 @@ h3.slidetitle {
 
 .reveal .controls .navigate-up,
 .reveal .controls .navigate-up.enabled {
-  border-bottom-color: #51483D; }
+  border-bottom-color: #FFFFFF; }
 
 .reveal .controls .navigate-down,
 .reveal .controls .navigate-down.enabled {
-  border-top-color: #51483D; }
+  border-top-color: #FFFFFF; }
 
 .reveal .controls .navigate-left.enabled:hover {
   border-right-color: #8b7c69; }
