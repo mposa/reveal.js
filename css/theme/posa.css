@@ -83,14 +83,13 @@ body {
 .reveal h1 {
   text-shadow: none; }
 
- h3.slidetitle {
+h1.slidetitle,
+h2.slidetitle,
+h3.slidetitle {
   color: #550000;
   font-variant: small-caps;
- }
-
-h2.slidetitle {
-  color: #550000;
-  font-variant: small-caps;
+  background: #e8e8e7;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
  }
 
 /*********************************************
