@@ -28,7 +28,8 @@ div.item {
 }
 
 div.border {
-  border:5px solid #550000;
+  border:2px solid #550000;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);   
   display: inline-block;
   padding: 4px;
 }
@@ -336,4 +337,4 @@ h3.slidetitle {
  * SLIDE NUMBER
  *********************************************/
 .reveal .slide-number {
-  color: #51483D; }
+  color: #000000; }
